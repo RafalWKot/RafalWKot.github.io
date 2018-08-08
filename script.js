@@ -12,7 +12,7 @@ $(document).ready(function() {
   getAllTasks();
 
   function getAllAvailableBoards(callback, callbackArgs) {
-    var requestUrl = trelloApiRoot + 'getTrelloBoards';
+    var requestUrl = trelloApiRoot + + 'getTrelloBoards';
 
     $.ajax({
       url: requestUrl,
@@ -61,7 +61,7 @@ $(document).ready(function() {
         .appendTo($tasksContainer);
     });
   }
-/*
+
   function getAllTasks() {
     const requestUrl = apiRoot;
 
@@ -76,18 +76,6 @@ $(document).ready(function() {
 
         getAllAvailableBoards(handleDatatableRender, tasks);
       }
-    });
-  }
-*/
-
-  function getAllTasks() {
-    //var requestUrl = apiRoot + 'getTasks';
-    var requestUrl = apiRoot
-
-    $.ajax({
-      url: requestUrl,
-      method: 'GET',
-      success: handleDatatableRender
     });
   }
 
@@ -120,10 +108,10 @@ $(document).ready(function() {
   function handleTaskDeleteRequest() {
     var parentEl = $(this).parents('[data-task-id]');
     var taskId = parentEl.attr('data-task-id');
-    var requestUrl = apiRoot;
+    var requestUrl = apiRoot + 'deleteTask';
 
     $.ajax({
-	  url: requestUrl + '/' + taskId,
+      url: requestUrl + '/' + taskId,
       method: 'DELETE',
       success: function() {
         parentEl.slideUp(400, function() { parentEl.remove(); });
