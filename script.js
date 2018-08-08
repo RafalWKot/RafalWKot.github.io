@@ -61,7 +61,7 @@ $(document).ready(function() {
         .appendTo($tasksContainer);
     });
   }
-
+/*
   function getAllTasks() {
     const requestUrl = apiRoot;
 
@@ -76,6 +76,18 @@ $(document).ready(function() {
 
         getAllAvailableBoards(handleDatatableRender, tasks);
       }
+    });
+  }
+*/
+
+  function getAllTasks() {
+    //var requestUrl = apiRoot + 'getTasks';
+    var requestUrl = apiRoot
+
+    $.ajax({
+      url: requestUrl,
+      method: 'GET',
+      success: handleDatatableRender
     });
   }
 
